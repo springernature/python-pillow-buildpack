@@ -1,3 +1,25 @@
+# Cloud Foundry Python Buildpack with Pillow support libraries
+
+This is a fork of the [Cloudfoundry Python Buildpack](https://github.com/cloudfoundry/python-buildpack) that adds extra libraries for more complete [Pillow](http://python-pillow.org)/[Pillow-SIMD](https://github.com/uploadcare/pillow-simd/) support.
+
+You can use this via:
+ ```bash
+cf push my_app -b https://github.com/springernature/python-pillow-buildpack
+ ```
+
+The bundle libwebp was built on an Ubuntu 18.04.2 VM:
+```bash
+sudo apt-get install build-essential autoconf libtool
+WEBP_VERSION=1.0.3
+curl -Lso- https://github.com/webmproject/libwebp/archive/v$WEBP_VERSION.tar.gz | tar xzf -
+cd libwebp-$WEBP_VERSION
+./autogen.sh
+./configure --prefix=/home/vcap/deps/0/libwebp && make
+sudo rm -rf /home/vcap/deps/0/libwebp
+sudo make install
+tar czvf libwebp-$WEBP_VERSION-cflinuxfs3.tgz -C /home/vcap/deps/0/libwebp .
+```
+
 # Cloud Foundry Python Buildpack
 
 [![CF Slack](https://www.google.com/s2/favicons?domain=www.slack.com) Join us on Slack](https://cloudfoundry.slack.com/messages/buildpacks/)
