@@ -166,6 +166,13 @@ dependencies:
   - cflinuxfs3
   source: https://files.pythonhosted.org/packages/fd/53/e5d7ae40d03e4ed20b7cba317cf9c0c97097c8debb39f9d72d182a6578a2/setuptools-67.7.2.tar.gz
   source_sha256: f104fa03692a2602fa0fec6c6a9e63b6c8a968de13e17c026957dd1f53d80990
+- name: libwebp
+  version: 1.0.3
+  cf_stacks:
+  - cflinuxfs3
+  uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/libwebp-1.0.3-cflinuxfs3.tgz
+  sha256: 5bfc92484ee42bab62b907c9190fabdaa54387c8b7987b1294cf90dbddc980f6
+  source: https://github.com/webmproject/libwebp/archive/v1.0.3.tar.gz
 include_files:
 - CHANGELOG
 - CONTRIBUTING.md
