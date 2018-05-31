@@ -85,6 +85,11 @@ func RunPython(s *Supplier) error {
 		return err
 	}
 
+	if err := s.InstallLibWebP(); err != nil {
+		s.Log.Error("Could not install LibWebP: %v", err)
+		return err
+	}
+
 	if err := s.HandlePipfile(); err != nil {
 		s.Log.Error("Error checking for Pipfile.lock: %v", err)
 		return err
@@ -325,6 +330,24 @@ func (s *Supplier) RewriteShebangs() error {
 			return err
 		}
 	}
+	return nil
+}
+
+func (s *Supplier) InstallLibWebP() error {
+	libWebPDir := filepath.Join(s.Stager.DepDir(), "libwebp")
+	if err := s.Installer.InstallOnlyVersion("libwebp", libWebPDir); err != nil {
+		return err
+	}
+
+	for _, dir := range []string{"bin", "lib", "include"} {
+		if err := s.Stager.LinkDirectoryInDepDir(filepath.Join(libWebPDir, dir), dir); err != nil {
+			return err
+		}
+	}
+	if err := s.Stager.LinkDirectoryInDepDir(filepath.Join(libWebPDir, "lib", "pkgconfig"), "pkgconfig"); err != nil {
+		return err
+	}
+
 	return nil
 }
 
