@@ -2,8 +2,6 @@
 
 This is a fork of the [Cloudfoundry Python Buildpack](https://github.com/cloudfoundry/python-buildpack) that adds extra libraries for more complete [Pillow](http://python-pillow.org)/[Pillow-SIMD](https://github.com/uploadcare/pillow-simd/) support.
 
-We've also added libexiv2 and libboost-python in order to support py3exiv2, for image metadata manipulation.
-
 You can use this via:
  ```bash
 cf push my_app -b https://github.com/springernature/python-pillow-buildpack

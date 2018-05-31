@@ -379,39 +379,6 @@ func (s *Supplier) InstallLibWebP() error {
 	return nil
 }
 
-func (s *Supplier) InstallLibExiv2() error {
-	libExiv2Dir := filepath.Join(s.Stager.DepDir(), "exiv2")
-	if err := s.Installer.InstallOnlyVersion("exiv2", libExiv2Dir); err != nil {
-		return err
-	}
-
-	for _, dir := range []string{"bin", "lib", "include"} {
-		if err := s.Stager.LinkDirectoryInDepDir(filepath.Join(libExiv2Dir, dir), dir); err != nil {
-			return err
-		}
-	}
-	if err := s.Stager.LinkDirectoryInDepDir(filepath.Join(libExiv2Dir, "lib", "pkgconfig"), "pkgconfig"); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (s *Supplier) InstallLibBoostPython() error {
-	libBoostPythonDir := filepath.Join(s.Stager.DepDir(), "libboost-python")
-	if err := s.Installer.InstallOnlyVersion("libboost-python", libBoostPythonDir); err != nil {
-		return err
-	}
-
-	for _, dir := range []string{"lib", "include"} {
-		if err := s.Stager.LinkDirectoryInDepDir(filepath.Join(libBoostPythonDir, dir), dir); err != nil {
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (s *Supplier) InstallPipPop() error {
 	tempPath := filepath.Join("/tmp", "pip-pop")
 	if err := s.Installer.InstallOnlyVersion("pip-pop", tempPath); err != nil {
