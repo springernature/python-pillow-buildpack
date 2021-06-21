@@ -170,6 +170,7 @@ dependencies:
   version: 1.1.0
   cf_stacks:
   - cflinuxfs3
+  - cflinuxfs4
   uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/libwebp-1.1.0-cflinuxfs3.tgz
   sha256: 3703246b474a5c85ee979a28032ed70d370ebc47054b76b63067cf1ad75064a6
   source: https://github.com/webmproject/libwebp/archive/v1.1.0.tar.gz
