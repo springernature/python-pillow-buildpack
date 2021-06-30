@@ -134,13 +134,13 @@ dependencies:
   source: https://files.pythonhosted.org/packages/af/e8/894c71e914dfbe01276a42dfad40025cd96119f2eefc39c554b6e8b9df86/setuptools-60.10.0.tar.gz
   source_sha256: 6599055eeb23bfef457d5605d33a4d68804266e6cb430b0fb12417c5efeae36c
 - name: libwebp
-  version: 1.1.0
+  version: 1.2.0
   cf_stacks:
   - cflinuxfs3
-  uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/libwebp-1.1.0-cflinuxfs3.tgz
-  sha256: 3703246b474a5c85ee979a28032ed70d370ebc47054b76b63067cf1ad75064a6
-  source: https://github.com/webmproject/libwebp/archive/v1.1.0.tar.gz
-  source_sha256: 424faab60a14cb92c2a062733b6977b4cc1e875a6398887c5911b3a1a6c56c51
+  uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/libwebp-1.2.0-cflinuxfs3.tgz
+  sha256: c5705d163c2ae680e32faef9a047015520d3871431f7738bef09c16a07c742fc
+  source: https://github.com/webmproject/libwebp/archive/v1.2.0.tar.gz
+  source_sha256: d60608c45682fa1e5d41c3c26c199be5d0184084cd8a971a6fc54035f76487d3
 include_files:
 - CHANGELOG
 - CONTRIBUTING.md
