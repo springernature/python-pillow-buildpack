@@ -7,10 +7,10 @@ You can use this via:
 cf push my_app -b https://github.com/springernature/python-pillow-buildpack
  ```
 
-The bundle libwebp was built on an Ubuntu 18.04.4 VM:
+The bundle libwebp was built on an Ubuntu 18.04.5 VM:
 ```bash
 sudo apt install build-essential autoconf libtool
-WEBP_VERSION=1.1.0
+WEBP_VERSION=1.2.0
 curl -Lso- https://github.com/webmproject/libwebp/archive/v$WEBP_VERSION.tar.gz | tar xzf -
 cd libwebp-$WEBP_VERSION
 ./autogen.sh
