@@ -98,6 +98,11 @@ func RunPython(s *Supplier) error {
 		return err
 	}
 
+	if err := s.InstallLibExiv2(); err != nil {
+		s.Log.Error("Could not install LibExiv2: %v", err)
+		return err
+	}
+
 	if err := s.HandlePipfile(); err != nil {
 		s.Log.Error("Error checking for Pipfile.lock: %v", err)
 		return err
@@ -383,6 +388,24 @@ func (s *Supplier) InstallLibWebP() error {
 		}
 	}
 	if err := s.Stager.LinkDirectoryInDepDir(filepath.Join(libWebPDir, "lib", "pkgconfig"), "pkgconfig"); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (s *Supplier) InstallLibExiv2() error {
+	libExiv2Dir := filepath.Join(s.Stager.DepDir(), "exiv2")
+	if err := s.Installer.InstallOnlyVersion("exiv2", libExiv2Dir); err != nil {
+		return err
+	}
+
+	for _, dir := range []string{"bin", "lib", "include"} {
+		if err := s.Stager.LinkDirectoryInDepDir(filepath.Join(libExiv2Dir, dir), dir); err != nil {
+			return err
+		}
+	}
+	if err := s.Stager.LinkDirectoryInDepDir(filepath.Join(libExiv2Dir, "lib", "pkgconfig"), "pkgconfig"); err != nil {
 		return err
 	}
 
