@@ -175,6 +175,14 @@ dependencies:
   sha256: a407a5582ba22268bdb668bf1d21b0b0e650029d93925d4e711bd13addcf1c83
   source: https://github.com/webmproject/libwebp/archive/v1.2.1.tar.gz
   source_sha256: 01bcde6a40a602294994050b81df379d71c40b7e39c819c024d079b3c56307f4
+- name: exiv2
+  version: 0.27.5
+  cf_stacks:
+  - cflinuxfs3
+  uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/exiv2-0.27.5-cflinuxfs3.tgz
+  sha256: 0803f8152b8e176ab5b5aeb0c305f70c3ba25c67cc4e2cebba8d10ed14ef40f4
+  source: https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
+  source_sha256: 35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2
 include_files:
 - CHANGELOG
 - CONTRIBUTING.md
