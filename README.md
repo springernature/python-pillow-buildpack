@@ -2,10 +2,16 @@
 
 This is a fork of the [Cloudfoundry Python Buildpack](https://github.com/cloudfoundry/python-buildpack) that adds extra libraries for more complete [Pillow](http://python-pillow.org)/[Pillow-SIMD](https://github.com/uploadcare/pillow-simd/) support.
 
+On top of that we've added libexiv2 in order to support py3exiv2, for image metadata manipulation.
+
 You can use this via:
  ```bash
 cf push my_app -b https://github.com/springernature/python-pillow-buildpack
  ```
+
+## Genereration of library binaries
+
+### libwebp
 
 The bundle libwebp was built on an Ubuntu 18.04.5 VM:
 ```bash
@@ -19,6 +25,87 @@ sudo rm -rf /home/vcap/deps/0/libwebp
 sudo make install
 tar czvf libwebp-$WEBP_VERSION-cflinuxfs3.tgz -C /home/vcap/deps/0/libwebp .
 ```
+
+### libexiv2
+Steps to generate the included `exiv2-0.27.5-cflinuxfs3.tgz` (carried out in an Ubuntu 18.04.6):
+
+Download and decompress sources ([Exiv2 Download page](https://exiv2.org/download.html)).
+```bash
+vagrant@vagrant:~/dev$ wget https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
+[...]
+vagrant@vagrant:~/dev$ sha256sum exiv2-0.27.5-Source.tar.gz 
+35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2  exiv2-0.27.5-Source.tar.gz
+vagrant@vagrant:~/dev$ tar xf exiv2-0.27.5-Source.tar.gz 
+vagrant@vagrant:~/dev$ cd exiv2-0.27.5-Source/
+```
+Follow [Exiv2 instructions for compiling for Linux](https://github.com/Exiv2/exiv2/tree/v0.27.5#5-1):
+```bash
+vagrant@vagrant:~/dev/exiv2-0.27.5-Source$ sudo apt --yes update
+[...]
+vagrant@vagrant:~/dev/exiv2-0.27.5-Source$ sudo apt install --yes build-essential git clang ccache python3 libxml2-utils cmake python3 libexpat1-dev libz-dev zlib1g-dev libssh-dev libcurl4-openssl-dev libgtest-dev google-mock
+vagrant@vagrant:~/dev/exiv2-0.27.5-Source$ mkdir build ; cd build ;
+vagrant@vagrant:~/dev/exiv2-0.27.5-Source/build$ cmake -DCMAKE_INSTALL_PREFIX=$PWD/../target .. -G "Unix Makefiles"
+[...]
+-- ------------------------------------------------------------------
+-- CMake Generator:   Unix Makefiles
+-- CMAKE_BUILD_TYPE:  
+-- Compiler info: GNU (/usr/bin/c++) ; version: 7.5.0
+-- CMAKE_CXX_STANDARD:
+--  --- Compiler flags --- 
+-- General:           
+	 -fstack-protector-strong
+	 -Wp,-D_GLIBCXX_ASSERTIONS
+	 -Wall
+	 -Wcast-align
+	 -Wpointer-arith
+	 -Wformat-security
+	 -Wmissing-format-attribute
+	 -Woverloaded-virtual
+	 -W
+-- Extra:              
+-- Debug:             -g3 -gstrict-dwarf -O0
+-- Release:           -O3 -DNDEBUG
+-- RelWithDebInfo:    -O2 -g -DNDEBUG
+-- MinSizeRel:        -Os -DNDEBUG
+--  --- Linker flags --- 
+-- General:           
+-- Debug:             
+-- Release:           
+-- RelWithDebInfo:    
+-- MinSizeRel:        
+-- 
+-- Compiler Options
+-- Warnings as errors:                 NO
+-- Use extra compiler warning flags:   NO
+-- 
+-- ------------------------------------------------------------------
+-- Building shared library:            YES
+-- Building PNG support:               YES
+-- XMP metadata support:               YES
+-- Building BMFF support:              NO
+-- Native language support:            NO
+-- Conversion of Windows XP tags:      YES
+-- Nikon lens database:                YES
+-- Building video support:             NO
+-- Building webready support:          NO
+-- Building exiv2 command:             YES
+-- Building samples:                   YES
+-- Building unit tests:                NO
+-- Building doc:                       NO
+-- Building with coverage flags:       NO
+-- Using ccache:                       NO
+[...]
+vagrant@vagrant:~/dev/exiv2-0.27.5-Source/build$ make
+[...]
+vagrant@vagrant:~/dev/exiv2-0.27.5-Source/build$ make install
+[...]
+vagrant@vagrant:~/dev/exiv2-0.27.5-Source/build$ tar czvf exiv2-0.27.5-cflinuxfs3.tgz -C ../target .
+[...]
+vagrant@vagrant:~/dev/exiv2-0.27.5-Source/build$ sha256sum exiv2-0.27.5-cflinuxfs3.tgz 
+0803f8152b8e176ab5b5aeb0c305f70c3ba25c67cc4e2cebba8d10ed14ef40f4  exiv2-0.27.5-cflinuxfs3.tgz
+vagrant@vagrant:~/dev/exiv2-0.27.5-Source/build$ 
+```
+
 
 # Cloud Foundry Python Buildpack
 
