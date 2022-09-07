@@ -149,6 +149,14 @@ dependencies:
   sha256: 0803f8152b8e176ab5b5aeb0c305f70c3ba25c67cc4e2cebba8d10ed14ef40f4
   source: https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
   source_sha256: 35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2
+- name: libboost-python
+  version: 1.80.0
+  cf_stacks:
+  - cflinuxfs3
+  uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/libboost-python-1.80.0-cflinuxfs3.tgz
+  sha256: 1f3c2600ebfdfa6aed1ddcc76c55487d05952631459d7a76ef874043f3532ea6
+  source: https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz
+  source_sha256: 4b2136f98bdd1f5857f1c3dea9ac2018effe65286cf251534b6ae20cc45e1847
 include_files:
 - CHANGELOG
 - CONTRIBUTING.md

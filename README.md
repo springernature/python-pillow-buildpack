@@ -2,7 +2,7 @@
 
 This is a fork of the [Cloudfoundry Python Buildpack](https://github.com/cloudfoundry/python-buildpack) that adds extra libraries for more complete [Pillow](http://python-pillow.org)/[Pillow-SIMD](https://github.com/uploadcare/pillow-simd/) support.
 
-On top of that we've added libexiv2 in order to support py3exiv2, for image metadata manipulation.
+We've also added libexiv2 and libboost-python in order to support py3exiv2, for image metadata manipulation.
 
 You can use this via:
  ```bash
@@ -106,6 +106,61 @@ vagrant@vagrant:~/dev/exiv2-0.27.5-Source/build$ sha256sum exiv2-0.27.5-cflinuxf
 vagrant@vagrant:~/dev/exiv2-0.27.5-Source/build$ 
 ```
 
+### libboost-python
+
+```bash
+vagrant@vagrant:~/dev$ wget https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz
+[...]
+vagrant@vagrant:~/dev$ sha256sum boost_1_80_0.tar.gz 
+4b2136f98bdd1f5857f1c3dea9ac2018effe65286cf251534b6ae20cc45e1847  boost_1_80_0.tar.gz
+vagrant@vagrant:~/dev$ tar xf boost_1_80_0.tar.gz
+vagrant@vagrant:~/dev$ cd boost_1_80_0/
+vagrant@vagrant:~/dev/boost_1_80_0$ sudo apt install build-essential python3-dev
+[...]
+vagrant@vagrant:~/dev/boost_1_80_0$ ./bootstrap.sh --prefix=$PWD/../boost-target --with-python-version=3.6 --with-python=/usr/bin/python3
+[...]
+vagrant@vagrant:~/dev/boost_1_80_0$ ./b2 --with-python install
+[...]
+Component configuration:
+
+    - atomic                   : not building
+    - chrono                   : not building
+    - container                : not building
+    - context                  : not building
+    - contract                 : not building
+    - coroutine                : not building
+    - date_time                : not building
+    - exception                : not building
+    - fiber                    : not building
+    - filesystem               : not building
+    - graph                    : not building
+    - graph_parallel           : not building
+    - headers                  : not building
+    - iostreams                : not building
+    - json                     : not building
+    - locale                   : not building
+    - log                      : not building
+    - math                     : not building
+    - mpi                      : not building
+    - nowide                   : not building
+    - program_options          : not building
+    - python                   : building
+    - random                   : not building
+    - regex                    : not building
+    - serialization            : not building
+    - stacktrace               : not building
+    - system                   : not building
+    - test                     : not building
+    - thread                   : not building
+    - timer                    : not building
+    - type_erasure             : not building
+    - wave                     : not building
+
+...patience...
+[...]
+vagrant@vagrant:~/dev/boost_1_80_0$ sha256sum libboost-python-1.80.0-cflinuxfs3.tgz 
+1f3c2600ebfdfa6aed1ddcc76c55487d05952631459d7a76ef874043f3532ea6  libboost-python-1.80.0-cflinuxfs3.tgz
+```
 
 # Cloud Foundry Python Buildpack
 
