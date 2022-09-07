@@ -102,6 +102,11 @@ func RunPython(s *Supplier) error {
 		return err
 	}
 
+	if err := s.InstallLibBoostPython(); err != nil {
+		s.Log.Error("Could not install LibBoostPython: %v", err)
+		return err
+	}
+
 	if err := s.HandlePipfile(); err != nil {
 		s.Log.Error("Error checking for Pipfile.lock: %v", err)
 		return err
@@ -397,6 +402,21 @@ func (s *Supplier) InstallLibExiv2() error {
 	}
 	if err := s.Stager.LinkDirectoryInDepDir(filepath.Join(libExiv2Dir, "lib", "pkgconfig"), "pkgconfig"); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (s *Supplier) InstallLibBoostPython() error {
+	libBoostPythonDir := filepath.Join(s.Stager.DepDir(), "libboost-python")
+	if err := s.Installer.InstallOnlyVersion("libboost-python", libBoostPythonDir); err != nil {
+		return err
+	}
+
+	for _, dir := range []string{"lib", "include"} {
+		if err := s.Stager.LinkDirectoryInDepDir(filepath.Join(libBoostPythonDir, dir), dir); err != nil {
+			return err
+		}
 	}
 
 	return nil
