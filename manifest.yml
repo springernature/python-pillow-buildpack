@@ -154,7 +154,7 @@ dependencies:
   cf_stacks:
   - cflinuxfs3
   uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/libboost-python-1.80.0-cflinuxfs3.tgz
-  sha256: 1f3c2600ebfdfa6aed1ddcc76c55487d05952631459d7a76ef874043f3532ea6
+  sha256: 8e08c79067c7116107f4b16aafb98aae6d1f1b63e8d582048fa914b565f143b9
   source: https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz
   source_sha256: 4b2136f98bdd1f5857f1c3dea9ac2018effe65286cf251534b6ae20cc45e1847
 include_files:
