@@ -115,12 +115,22 @@ vagrant@vagrant:~/dev$ sha256sum boost_1_80_0.tar.gz
 4b2136f98bdd1f5857f1c3dea9ac2018effe65286cf251534b6ae20cc45e1847  boost_1_80_0.tar.gz
 vagrant@vagrant:~/dev$ tar xf boost_1_80_0.tar.gz
 vagrant@vagrant:~/dev$ cd boost_1_80_0/
-vagrant@vagrant:~/dev/boost_1_80_0$ sudo apt install build-essential python3-dev
+vagrant@vagrant:~$ sudo apt install build-essential software-properties-common 
 [...]
-vagrant@vagrant:~/dev/boost_1_80_0$ ./bootstrap.sh --prefix=$PWD/../boost-target --with-python-version=3.6 --with-python=/usr/bin/python3
+vagrant@vagrant:~$ sudo add-apt-repository ppa:deadsnakes/ppa
+[...]
+vagrant@vagrant:~$ sudo apt install python3.10-dev
+[...]
+vagrant@vagrant:~/dev/boost_1_80_0$ ./bootstrap.sh --prefix=$PWD/../boost-target --with-python-version=3.10 --with-python=/usr/bin/python3.10
 [...]
 vagrant@vagrant:~/dev/boost_1_80_0$ ./b2 --with-python install
-[...]
+Performing configuration checks
+
+    - default address-model    : 64-bit [1]
+    - default architecture     : x86 [1]
+
+[1] gcc-7
+
 Component configuration:
 
     - atomic                   : not building
@@ -158,8 +168,11 @@ Component configuration:
 
 ...patience...
 [...]
+vagrant@vagrant:~/dev/boost_1_80_0$ tar czvf libboost-python-1.80.0-cflinuxfs3.tgz -C ../boost-target .
+[...]
 vagrant@vagrant:~/dev/boost_1_80_0$ sha256sum libboost-python-1.80.0-cflinuxfs3.tgz 
-1f3c2600ebfdfa6aed1ddcc76c55487d05952631459d7a76ef874043f3532ea6  libboost-python-1.80.0-cflinuxfs3.tgz
+8e08c79067c7116107f4b16aafb98aae6d1f1b63e8d582048fa914b565f143b9  libboost-python-1.80.0-cflinuxfs3.tgz
+
 ```
 
 # Cloud Foundry Python Buildpack
