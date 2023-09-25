@@ -182,38 +182,6 @@ dependencies:
   sha256: 1dbb1ec8c38b2d0e84522cf0d50432d7e85a0f6b2fe58278ff72c10a07a5cb7b
   source: https://github.com/webmproject/libwebp/archive/v1.2.1.tar.gz
   source_sha256: 01bcde6a40a602294994050b81df379d71c40b7e39c819c024d079b3c56307f4
-#- name: exiv2
-#  version: 0.27.5
-#  cf_stacks:
-#  - cflinuxfs3
-#  uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/exiv2-0.27.5-cflinuxfs3.tgz
-#  sha256: 0803f8152b8e176ab5b5aeb0c305f70c3ba25c67cc4e2cebba8d10ed14ef40f4
-#  source: https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
-#  source_sha256: 35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2
-#- name: exiv2
-#  version: 0.27.5
-#  cf_stacks:
-#    - cflinuxfs4
-#  uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/exiv2-0.27.5-cflinuxfs4.tgz
-#  sha256: a500cd1a889afd2019efe0b498c0b19f5e3cb97d58ed7a64b026db54e7aec41e
-#  source: https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
-#  source_sha256: 35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2
-#- name: libboost-python
-#  version: 1.80.0
-#  cf_stacks:
-#  - cflinuxfs3
-#  uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/libboost-python-1.80.0-cflinuxfs3.tgz
-#  sha256: 8e08c79067c7116107f4b16aafb98aae6d1f1b63e8d582048fa914b565f143b9
-#  source: https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz
-#  source_sha256: 4b2136f98bdd1f5857f1c3dea9ac2018effe65286cf251534b6ae20cc45e1847
-#- name: libboost-python
-#  version: 1.80.0
-#  cf_stacks:
-#    - cflinuxfs4
-#  uri: https://github.com/springernature/python-pillow-buildpack/raw/master/dist/libboost-python-1.80.0-cflinuxfs4.tgz
-#  sha256: 413177f5256743d931e0581d99a6931f919dae1e43ec7b8e325a3f99dc4cc3e6
-#  source: https://boostorg.jfrog.io/artifactory/main/release/1.80.0/source/boost_1_80_0.tar.gz
-#  source_sha256: 4b2136f98bdd1f5857f1c3dea9ac2018effe65286cf251534b6ae20cc45e1847
 include_files:
 - CHANGELOG
 - CONTRIBUTING.md
