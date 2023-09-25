@@ -97,16 +97,6 @@ func RunPython(s *Supplier) error {
 		return err
 	}
 
-// 	if err := s.InstallLibExiv2(); err != nil {
-// 		s.Log.Error("Could not install LibExiv2: %v", err)
-// 		return err
-// 	}
-//
-// 	if err := s.InstallLibBoostPython(); err != nil {
-// 		s.Log.Error("Could not install LibBoostPython: %v", err)
-// 		return err
-// 	}
-
 	if err := s.HandlePipfile(); err != nil {
 		s.Log.Error("Error checking for Pipfile.lock: %v", err)
 		return err
